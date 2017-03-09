@@ -20,5 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Auth::routes();
-
+Route::get('/user', function() { return View::make("user"); });
 Route::get('/api/v1/user/{id?}', 'UserController@index');
+Route::post('/api/v1/user', 'UserController@store');
+Route::post('/api/v1/user/{id}', 'UserController@update');
+Route::delete('/api/v1/user/{id}', 'UserController@destroy');

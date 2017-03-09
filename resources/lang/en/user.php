@@ -23,6 +23,9 @@ return [
     'name' => 'Name',
     'email' => 'Email',
     'created_at' => 'Created At',
-    'updated_at' => 'Updated At'
-
+    'updated_at' => 'Updated At',
+    'name_holder' => 'Full name',
+    'email_holder' => 'Email Address',
+    'add' => 'Add New User',
+    'detail' => 'User Details'
 ];
