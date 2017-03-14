@@ -1,5 +1,6 @@
 <?php
 
+Auth::loginUsingId(1);
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +26,6 @@ Route::get('/api/v1/user/{id?}', 'UserController@index');
 Route::post('/api/v1/user', 'UserController@store');
 Route::post('/api/v1/user/{id}', 'UserController@update');
 Route::delete('/api/v1/user/{id}', 'UserController@destroy');
+
+// Documents
+Route::get('documents/{document}', 'DocumentsController@show');
