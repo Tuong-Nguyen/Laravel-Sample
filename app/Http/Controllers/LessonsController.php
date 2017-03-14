@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 
 class LessonsController extends Controller
 {
+    const ITEM_PER_PAGE = 15;
     public function index(Request $request)
     {
-        $lessons = Lesson::paginate(15);
-        return view('lesson', ['lessons' => $lessons]);
+        $lessons = (new Lesson)->newQuery();
+        if ($request->exists('popular')) {
+            $lessons->orderBy('views', 'desc');
+        }
+        if ($request->has('difficulty')) {
+            $lessons->where('difficulty', $request->difficulty);
+        }
+        
+        return view('lesson', ['lessons' => $lessons->paginate(self::ITEM_PER_PAGE)]);
     }
 }
