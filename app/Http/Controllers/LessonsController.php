@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Filter\LessonFilters;
 use App\Model\Lesson;
 use Illuminate\Http\Request;
 
 class LessonsController extends Controller
 {
     const ITEM_PER_PAGE = 15;
-    public function index(Request $request)
+
+    public function index(LessonFilters $filters)
     {
-        $lessons = (new Lesson)->newQuery();
-        if ($request->exists('popular')) {
-            $lessons->orderBy('views', 'desc');
-        }
-        if ($request->has('difficulty')) {
-            $lessons->where('difficulty', $request->difficulty);
-        }
-        
-        return view('lesson', ['lessons' => $lessons->paginate(self::ITEM_PER_PAGE)]);
+        return view('lesson', ['lessons' => Lesson::filter($filters)->paginate(self::ITEM_PER_PAGE)]);
     }
 }
