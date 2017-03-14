@@ -29,3 +29,6 @@ Route::delete('/api/v1/user/{id}', 'UserController@destroy');
 
 // Documents
 Route::get('documents/{document}', 'DocumentsController@show');
+
+// Lessons
+Route::get('lessons', 'LessonsController@index');
