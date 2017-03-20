@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Filter\LessonFilters;
 use App\Model\Lesson;
-use Illuminate\Http\Request;
 
 class LessonsController extends Controller
 {
